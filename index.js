@@ -4,7 +4,7 @@ const http = require("http");
 const { Client, GatewayIntentBits } = require("discord.js");
 
 const port = Number(process.env.PORT) || 3000;
-const token = process.env.DISCORD_BOT_TOKEN || process.env.API_TOKEN;
+const token = process.env.DISCORD_BOT_TOKEN || process.env.BOT_TOKEN || process.env.API_TOKEN;
 
 const server = http.createServer((req, res) => {
 	res.statusCode = 200;
@@ -17,7 +17,7 @@ server.listen(port, () => {
 });
 
 if (!token) {
-	console.error("Missing bot token. Set DISCORD_BOT_TOKEN or API_TOKEN in .env / Railway variables.");
+	console.error("Missing bot token. Set DISCORD_BOT_TOKEN, BOT_TOKEN, or API_TOKEN in .env / Railway variables.");
 	process.exit(1);
 }
 
